@@ -1,4 +1,6 @@
 from django.db import models
+from django.conf import settings
+
 
 # Create your models here.
 class Retos(models.Model):
@@ -10,7 +12,7 @@ class Retos(models.Model):
         return self.reto
     
 class Retosrespuesta (models.Model):
-    usuario = models.ForeignKey("User", on_delete=models.CASCADE)
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     reto = models.ForeignKey(Retos, on_delete=models.CASCADE)
     imagenusuario = models.ImageField(upload_to='pruebas_imagen')
     ESTADO = {
@@ -21,7 +23,7 @@ class Retosrespuesta (models.Model):
 
     
 class Poemas (models.Model):
-    usuario = models.ForeignKey("User", on_delete=models.CASCADE)
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     titulopoema = models.CharField(null = False, max_length=90)
     rima = models.TextField(null = False, max_length= 1000)
     puntospoemas = models.IntegerField(default=0, null= True)
@@ -31,7 +33,7 @@ class Poemas (models.Model):
 
 
 class Dibujos (models.Model):
-    usuario = models.ForeignKey("User", on_delete=models.CASCADE)
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     nombredibujo = models.CharField(null=False, max_length=90)
     imagen = models.ImageField(upload_to='dibujos_imagenes')
     puntosdibujo = models.IntegerField(default=0, null= True)
@@ -41,7 +43,7 @@ class Dibujos (models.Model):
     
 
 class Rankings (models.Model):
-    usuario = models.ForeignKey("User", on_delete=models.CASCADE)
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     puntostotales = models.IntegerField(default= 0, null= False)
 
     def  __str__(self) -> str:
