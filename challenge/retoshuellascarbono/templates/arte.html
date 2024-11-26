@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}ARTE{% endblock %} 
+{% block content %}      
+    <h2>Cambiemos el mundo con arte</h2>
+    <p>Demuestra tu lado artistico con poemas o dibujos sobre el cambio climatico. Asi lograremos crear conciencia poco a poco a las personas</p>
+    <a href="{% url "retoshuellascarbono:dibujos_form.html" %}" class="btn btn-secondary mb-3">Añade tu dibujo</a>
+    <a href="{% url "retoshuellascarbono:poemas_form.html" %}" class="btn btn-secondary mb-3">Añade tu poema</a>
+    {% for poema in poemas %}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Titulo: {{ poema.titulopoema }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Creador: {{ poema.usuario }}</h6>
+                <p class="card-text">{{ poema.rima }}</p>
+                <a href="poema/{{ poema.id }}" class="btn btn-primary"><i class="fa-regular fa-eye"></i></a>
+                <a href="edit_poema/{{ poema.id }}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a href="delete_poema/{{ poema.id }}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+            </div>
+        </div>
+    {% endfor %}
+    {% for dibujo in dibujos %}
+        <div class="card" style="width: 18rem;">
+            <img src="{{ dibujo.imagen.url }}" class="card-img-top">
+            <div class="card-body">
+                <p class="card-text">Creador: {{ dibujo.usuario }}</p>
+                <a href="dibujo/{{ dibujo.id }}" class="btn btn-primary"><i class="fa-regular fa-eye"></i></a>
+                <a href="edit_dibujo/{{ dibujo.id }}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a href="delete_dibujo/{{ dibujo.id }}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+            </div>
+        </div>
+    {% endfor %}
+    <a href="{% url "retoshuellascarbono:index" %}" class="btn btn-primary">Regresar al Inicio</a>
+{% endblock %}
