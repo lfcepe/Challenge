@@ -22,6 +22,7 @@
             <img src="{{ dibujo.imagen.url }}" class="card-img-top">
             <div class="card-body">
                 <p class="card-text">Creador: {{ dibujo.usuario }}</p>
+                <p class="card-text">NOmbre del Dibujo: {{ dibujo.nombredibujo }}</p>
                 <a href="dibujo/{{ dibujo.id }}" class="btn btn-primary"><i class="fa-regular fa-eye"></i></a>
                 <a href="edit_dibujo/{{ dibujo.id }}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
                 <a href="delete_dibujo/{{ dibujo.id }}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
