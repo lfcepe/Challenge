@@ -10,8 +10,8 @@ class Retos(models.Model):
         return self.reto
     
 class Retosrespuesta (models.Model):
-    usuario = models.ForeignKey("app.Model", verbose_name=_(""), on_delete=models.CASCADE)
-    reto = models.ForeignKey("app.Model", verbose_name=_(""), on_delete=models.CASCADE)
+    usuario = models.ForeignKey("User", on_delete=models.CASCADE)
+    reto = models.ForeignKey(Retos, on_delete=models.CASCADE)
     imagenusuario = models.ImageField(upload_to='pruebas_imagen')
     ESTADO = {
         ('APROVADO', 'APROVADO'),
