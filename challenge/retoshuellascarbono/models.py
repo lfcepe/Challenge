@@ -19,7 +19,8 @@ class Retosrespuesta (models.Model):
         ('APROVADO', 'APROVADO'),
         ('PENDIENTE', 'PENDIENTE')
     }
-    estado = models.CharField(max_length=50, choices= ESTADO, null = False)
+    estado = models.CharField(default= 'PENDIENTE', max_length=50, choices= ESTADO, null = False)
+    fecha_subida = models.DateTimeField(auto_now_add=True)
 
     
 class Poemas (models.Model):
@@ -27,6 +28,7 @@ class Poemas (models.Model):
     titulopoema = models.CharField(null = False, max_length=90)
     rima = models.TextField(null = False, max_length= 1000)
     puntospoemas = models.IntegerField(default=0, null= True)
+    fecha_subida = models.DateTimeField(auto_now_add=True)
 
     def __str__(self) -> str:
         return self.titulopoema
@@ -37,6 +39,7 @@ class Dibujos (models.Model):
     nombredibujo = models.CharField(null=False, max_length=90)
     imagen = models.ImageField(upload_to='dibujos_imagenes')
     puntosdibujo = models.IntegerField(default=0, null= True)
+    fecha_subida = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.nombredibujo
