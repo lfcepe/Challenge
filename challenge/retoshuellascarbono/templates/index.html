@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static "css/challenge-index.css" %}">
 </head>
-<!-- Imagen y barra de navegacion en el index -->
+<!-- Imagen y texto en el index -->
  <header>
     <div
             id="intro-example"
@@ -29,10 +29,11 @@
     </div>
 </header>
 <body>
+    {% comment %} este es el enlace a las tarjetas con los retos {% endcomment %}
     {% include "cards.html" %}
 </body>
-
 <footer>
+    {% comment %} este es el enlace al footer {% endcomment %}
     {% include "footer.html" %}
 </footer>
 

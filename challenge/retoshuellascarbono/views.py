@@ -9,3 +9,7 @@ def index(request):
     template = loader.get_template('index.html')
     context = {}
     return HttpResponse(template.render(context, request))
+
+#Vista para el login
+class CustomLoginView(LoginView):
+    template_name = 'login.html'

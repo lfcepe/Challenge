@@ -26,6 +26,16 @@
                   <li class="nav-item">
                     <a class="nav-link active" href="#">RANKING SEMANAL</a>
                   </li>
+                  {% if user.is_authenticated %}
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'retoshuellascarbono:logout' %}">Logout</a>
+                  </li>
+                  {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                  </li>
+                
+                  {% endif %}
                   <li class="nav-item">
                     <a class="nav-link active" href="#">PUNTAJE OBTENIDO: </a>
                   </li>
