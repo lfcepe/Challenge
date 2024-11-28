@@ -14,8 +14,8 @@
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <a href="{% url "retoshuellascarbono : registro" %}">Si no se a registrado, de clic aqui</a>
-            <button type="submit">Ingresar</button>
+            <a href="{% url "registro" %}">Si no se a registrado, de clic aqui</a>
+            <center><button type="submit">Ingresar</button></center>
         </form>
     </div>
 </body>

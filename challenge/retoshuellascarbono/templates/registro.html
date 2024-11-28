@@ -1,11 +1,22 @@
-{% extends 'base.html' %}
-
 {% block content %}
-  <h2>Registrate</h2>
-  
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Registrar</button>
-  </form>
-{% endblock %}
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static "bootstrap.min.css" %}"> 
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrate</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Registrate</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Registrar</button>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock content %}
