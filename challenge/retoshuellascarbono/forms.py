@@ -4,7 +4,7 @@ from models import Retosrespuesta, Dibujos, Poemas, Retos
 class Reto_form (forms.ModelForm):
     class Meta:
         model: Retos
-        fields: '___all__'
+        fields: '__all__'
         widgets: {
             'reto',
             'descripcion',
