@@ -51,7 +51,7 @@ class UserRegistrationForm(forms.ModelForm):
             'first_name':'Nombre', 
             'last_name': 'Apellido',
             'password': 'Contraseña',
-            'password_confirm': 'Confirmas Contraseña',
+            'password_confirm': 'Confirmar Contraseña',
         }
 
     def clean_password_confirm(self):
