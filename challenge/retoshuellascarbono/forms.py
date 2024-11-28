@@ -5,37 +5,37 @@ from django.contrib.auth.models import User
 class Reto_form (forms.ModelForm):
     class Meta:
         model: Retos
-        fields: '__all__'
-        widgets: {
-            'reto',
-            'descripcion',
-            'puntos',
+        fields = '__all__'
+        widgets = {
+            'reto': forms.TextInput(attrs={'class': 'form-control'}),
+            'descripcion':forms.TextInput(attrs={'class': 'form-control'}),
+            'puntos':forms.TextInput(attrs={'class': 'form-control'})
         }
 
 class Retosrespuesta_form (forms.ModelForm):
     class Meta:
         model: Retosrespuesta
-        fields: ['imagenusuario']
-        widgets:{
-            'imagenusuario',
+        fields= ['imagenusuario']
+        widgets= {
+            'imagenusuario':forms.ClearableFileInput(attrs={'class':'form-control'})
         }
 
 class Poemas_form (forms.ModelForm):
     class Meta:
         model: Poemas
-        fields:['titulopoema', 'rima']
-        widgets:{
-            'titulopoema',
-            'rima',
+        fields = ['titulopoema', 'rima']
+        widgets = {
+            'titulopoema':forms.TextInput(attrs={'class': 'form-control'}),
+            'rima':forms.TextInput(attrs={'class': 'form-control'}),
         }
 
 class Dibujos_form (forms.ModelForm):
     class Meta:
         model: Dibujos
-        fields:['nombredibujo', 'imagen']
-        widgets:{
-            'nombredibujo', 
-            'imagen',
+        fields = ['nombredibujo', 'imagen']
+        widgets = {
+            'nombredibujo':forms.TextInput(attrs={'class': 'form-control'}), 
+            'imagen':forms.ClearableFileInput(attrs={'class':'form-control'}),
         }
 
 class UserRegistrationForm(forms.ModelForm):
