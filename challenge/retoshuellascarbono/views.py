@@ -4,11 +4,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from .models import Retos, Retosrespuesta, Poemas, Dibujos, Rankings
-<<<<<<< HEAD
-from .forms import Retosrespuesta_form
-=======
 from .forms import Retosrespuesta_form, Reto_form, Dibujos_form, Poemas_form
->>>>>>> c9f8451 (modificacion forms)
 # Create your views here.
 
 def index(request):
@@ -16,7 +12,6 @@ def index(request):
     context = {}
     return HttpResponse(template.render(context, request))
 
-<<<<<<< HEAD
 #Vista para el login
 class CustomLoginView(LoginView):
     template_name = 'login.html'
@@ -24,8 +19,6 @@ class CustomLoginView(LoginView):
 def arte():
     pass
     
-=======
 def arte(request):
     poemas = Poemas.objects.order_by('titulopoema')
     dibujos = Dibujos.objects.order_by('')
->>>>>>> c9f8451 (modificacion forms)

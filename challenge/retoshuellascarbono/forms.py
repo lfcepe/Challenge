@@ -1,5 +1,5 @@
 from django import forms
-from models import Retosrespuesta, Dibujos, Poemas, Retos
+from .models import Retosrespuesta, Dibujos, Poemas, Retos
 
 class Reto_form (forms.ModelForm):
     class Meta:
