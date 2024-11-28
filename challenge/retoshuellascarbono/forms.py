@@ -48,12 +48,17 @@ class UserRegistrationForm(forms.ModelForm):
         fields = ['username', 'email', 'first_name', 'last_name', 'password', 'password_confirm']
         labels = {
             'username': 'Nombre de usuario', 
+            'email':'Correo electronico',
             'first_name':'Nombre', 
             'last_name': 'Apellido',
             'password': 'Contraseña',
             'password_confirm': 'Confirmar Contraseña',
         }
 
+        help_texts = {
+            'username':None,
+        }
+        
     def clean_password_confirm(self):
         password = self.cleaned_data.get('password')
         password_confirm = self.cleaned_data.get('password_confirm')
