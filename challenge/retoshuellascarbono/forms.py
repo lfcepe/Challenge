@@ -1,6 +1,7 @@
 from django import forms
 from .models import Retosrespuesta, Dibujos, Poemas, Retos
 from django.contrib.auth.models import User
+from django.utils.translation import gettext_lazy as _
 
 class Reto_form (forms.ModelForm):
     class Meta:
@@ -44,7 +45,14 @@ class UserRegistrationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'first_name', 'last_name']
+        fields = ['username', 'email', 'first_name', 'last_name', 'password', 'password_confirm']
+        labels = {
+            'username': 'Nombre de usuario', 
+            'first_name':'Nombre', 
+            'last_name': 'Apellido',
+            'password': 'Contraseña',
+            'password_confirm': 'Confirmas Contraseña',
+        }
 
     def clean_password_confirm(self):
         password = self.cleaned_data.get('password')
