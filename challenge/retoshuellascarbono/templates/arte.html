@@ -3,8 +3,8 @@
 {% block content %}      
     <h2>Cambiemos el mundo con arte</h2>
     <p>Demuestra tu lado artistico con poemas o dibujos sobre el cambio climatico. Asi lograremos crear conciencia poco a poco a las personas</p>
-    <a href="{% url "retoshuellascarbono:dibujos_form" %}" class="btn btn-secondary mb-3">Añade tu dibujo</a>
-    <a href="{% url "retoshuellascarbono:poemas_form" %}" class="btn btn-secondary mb-3">Añade tu poema</a>
+    <a href="{% url "dibujos_form" %}" class="btn btn-secondary mb-3">Añade tu dibujo</a>
+    <a href="{% url "poemas_form" %}" class="btn btn-secondary mb-3">Añade tu poema</a>
     {% for poema in poemas %}
         <div class="card" style="width: 18rem;">
             <div class="card-body">
@@ -29,5 +29,5 @@
             </div>
         </div>
     {% endfor %}
-    <a href="{% url "retoshuellascarbono:index" %}" class="btn btn-primary">Regresar al Inicio</a>
+    <a href="{% url "index" %}" class="btn btn-primary">Regresar al Inicio</a>
 {% endblock %}
