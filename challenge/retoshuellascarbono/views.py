@@ -18,12 +18,14 @@ def index(request):
 class CustomLoginView(LoginView):
     template_name = 'login.html'
 
-def arte():
-    pass
-    
 def arte(request):
-    poemas = Poemas.objects.order_by('titulopoema')
-    dibujos = Dibujos.objects.order_by('')
+    poemas = Poemas.objects.all()  
+    dibujos = Dibujos.objects.all()
+    
+    return render(request, 'arte.html', {
+        'poemas': poemas,
+        'dibujos': dibujos,
+    })
 
 def registrarusuario(request):
     if request.method == 'POST':
@@ -41,3 +43,36 @@ def registrarusuario(request):
         form = UserRegistrationForm()
     
     return render(request, 'registro.html', {'form': form})
+
+@login_required
+def subir_poema(request):
+    usuario = User.objects.get(user=request.user)
+    if request.method == 'POST':
+        form = Poemas_form(request.POST)
+        if form.is_valid():
+            poema = form.save(commit=False)
+            poema.usuario = usuario
+            poema.save()
+            poema.puntospoemas += 5
+            poema.save()
+            return redirect('arte.html')  # Redirige al apartado artístico
+    else:
+        form = Poemas_form()
+    return render(request, 'poemas_form.html', {'form': form})
+
+
+@login_required
+def subir_dibujo(request):
+    usuario = User.objects.get(user=request.user)
+    if request.method == 'POST':
+        form = Dibujos_form(request.POST, request.FILES)
+        if form.is_valid():
+            dibujo = form.save(commit=False)
+            dibujo.usuario = usuario
+            dibujo.save()
+            dibujo.puntosdibujo += 6
+            dibujo.save()
+            return redirect('arte.html')  
+    else:
+        form = Dibujos_form()
+    return render(request, 'dibujos_form.html', {'form': form})
