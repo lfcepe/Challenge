@@ -37,7 +37,7 @@ def registrarusuario(request):
             from django.contrib.auth import login
             login(request, usuario)
             messages.success(request, "Tu cuenta se ha creado correctamente.")
-            return redirect('login.html') 
+            return redirect('login') 
 
     else:
         form = UserRegistrationForm()
@@ -55,7 +55,7 @@ def subir_poema(request):
             poema.save()
             poema.puntospoemas += 5
             poema.save()
-            return redirect('arte.html')  # Redirige al apartado artístico
+            return redirect('arte')  # Redirige al apartado artístico
     else:
         form = Poemas_form()
     return render(request, 'poemas_form.html', {'form': form})
@@ -72,7 +72,7 @@ def subir_dibujo(request):
             dibujo.save()
             dibujo.puntosdibujo += 6
             dibujo.save()
-            return redirect('arte.html')  
+            return redirect('arte')  
     else:
         form = Dibujos_form()
     return render(request, 'dibujos_form.html', {'form': form})
