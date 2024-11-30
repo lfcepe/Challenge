@@ -89,10 +89,9 @@ def subir_dibujo(request):
 
 #retos
 @login_required
-def usuariosretos_form(request, reto_id=None):
+def usuariosretos_form(request):
     # Intenta obtener el reto con el ID proporcionado
-    reto = reto_id
-    
+    usuario = request.user
     if request.method == 'POST':
         form = Retosrespuesta_form(request.POST, request.FILES)
         if form.is_valid():
@@ -104,7 +103,7 @@ def usuariosretos_form(request, reto_id=None):
     else:
         form = Retosrespuesta_form()
 
-    return render(request, 'usuariosretos_form.html', {'form': form, 'reto': reto})
+    return render(request, 'usuariosretos_form.html', {'form': form})
 
 @login_required
 def administrar_respuestas(request, reto_id):
