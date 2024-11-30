@@ -1,5 +1,7 @@
 from django.template import loader
 from django.http import HttpResponse
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -60,6 +62,7 @@ def subir_poema(request):
             poema.usuario = usuario
             poema.save()
             poema.puntospoemas += 5
+            ranking.puntostotales += poema.puntospoemas
             poema.save()
             return redirect('retoshuellascarbono:arte')  
     else:
@@ -77,6 +80,7 @@ def subir_dibujo(request):
             dibujo.usuario = usuario
             dibujo.save()
             dibujo.puntosdibujo += 6
+            ranking.puntostotales += dibujo.puntosdibujo
             dibujo.save()
             return redirect('retoshuellascarbono:arte')  
     else:
@@ -85,18 +89,21 @@ def subir_dibujo(request):
 
 #retos
 @login_required
-def respuestas_usuarios(request, reto_id):
-    reto = Retosrespuesta.objects.get(id=reto_id)
+def usuariosretos_form(request, reto_id=None):
+    # Intenta obtener el reto con el ID proporcionado
+    reto = reto_id
+    
     if request.method == 'POST':
         form = Retosrespuesta_form(request.POST, request.FILES)
         if form.is_valid():
             reto_respuesta = form.save(commit=False)
             reto_respuesta.usuario = request.user
-            reto_respuesta.reto = reto
+            reto_respuesta.reto = reto  # Asigna el reto obtenido
             reto_respuesta.save()
-            return redirect('retoshuellascarbono:index')  
+            return redirect('retoshuellascarbono:index')
     else:
         form = Retosrespuesta_form()
+
     return render(request, 'usuariosretos_form.html', {'form': form, 'reto': reto})
 
 @login_required
@@ -112,21 +119,33 @@ def administrar_respuestas(request, reto_id):
             reto_respuesta.save()
             reto = get_object_or_404(Retos, pk = reto_id)
             ranking, created = Rankings.objects.get_or_create(usuario=reto_respuesta.usuario)
-            ranking.puntaje += reto.puntos
+            ranking.puntostotales += reto.puntos
             ranking.save()
         else:
             reto_respuesta.estado = 'RECHAZADO'
             reto_respuesta.save()
             ranking, created = Rankings.objects.get_or_create(usuario=reto_respuesta.usuario)
-            ranking.puntaje += 0
+            ranking.puntostotales += 0
             ranking.save()
 
 
     return render(request, 'administrar_retos.html', {'retos_respuestas': retos_respuestas})
 
+#ranking
 def ranking(request):
-    rankings = Rankings.objects.all().order_by('-puntaje')
+    rankings = Rankings.objects.all().order_by('-puntostotales')
     return render(request, 'ranking.html', {'rankings': rankings})
+
+@receiver(post_save, sender=User)
+def crear_usuario_ranking(sender, instance, created, **kwargs):
+    if created:
+        Rankings.objects.create(user=instance)
+
+def puntaje_usuario(request):
+    if request.user.is_authenticated:
+        ranking = Rankings.objects.get(user=request.user)
+        return {'puntaje_total': ranking.puntostotales}
+    return {}
 
 #Retos Administradores
 def es_administrador(user):

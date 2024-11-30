@@ -18,7 +18,7 @@ class Retosrespuesta (models.Model):
     descripcion = models.TextField(null=False, max_length= 1000)
     fecha_subida = models.DateTimeField(auto_now_add=True)
     ESTADO = {
-        ('APROVADO', 'APROVADO'),
+        ('APROBADO', 'APROBADO'),
         ('RECHAZADO', 'RECHAZADO'),
         ('PENDIENTE', 'PENDIENTE'),
     }
@@ -51,5 +51,9 @@ class Rankings (models.Model):
     usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     puntostotales = models.IntegerField(default= 0, null= False)
 
-    def  __str__(self) -> str:
-        return self.usuario
+    @property
+    def puntaje_total(self):
+        return  + self.puntaje_de_dibujos + self.puntaje_de_poemas
+
+    def __str__(self):
+        return f"{self.user.username} - {self.puntaje_total}"
