@@ -24,7 +24,7 @@ class Retosrespuesta_form (forms.ModelForm):
 
 class Poemas_form (forms.ModelForm):
     class Meta:
-        model: Poemas
+        model = Poemas
         fields = ['titulopoema', 'rima']
         widgets = {
             'titulopoema':forms.TextInput(attrs={'class': 'form-control'}),
@@ -33,7 +33,7 @@ class Poemas_form (forms.ModelForm):
 
 class Dibujos_form (forms.ModelForm):
     class Meta:
-        model: Dibujos
+        model = Dibujos
         fields = ['nombredibujo', 'imagen']
         widgets = {
             'nombredibujo':forms.TextInput(attrs={'class': 'form-control'}), 

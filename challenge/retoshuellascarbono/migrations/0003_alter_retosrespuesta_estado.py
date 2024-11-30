@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('retoshuellascarbono', '0001_initial'),
+        ('retoshuellascarbono', '0002_alter_retosrespuesta_estado'),
     ]
 
     operations = [
         migrations.AlterField(
             model_name='retosrespuesta',
             name='estado',
-            field=models.CharField(choices=[('APROVADO', 'APROVADO'), ('PENDIENTE', 'PENDIENTE'), ('RECHAZADO', 'RECHAZADO')], default='PENDIENTE', max_length=50),
+            field=models.CharField(choices=[('PENDIENTE', 'PENDIENTE'), ('APROVADO', 'APROVADO'), ('RECHAZADO', 'RECHAZADO')], default='PENDIENTE', max_length=50),
         ),
     ]

@@ -18,10 +18,10 @@
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{% url "index" %}">INICIO</a>
+                    <a class="nav-link" aria-current="page" href="{% url "retoshuellascarbono:index" %}">INICIO</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{% url "arte" %}">APARTADO ARTISTICO</a>
+                    <a class="nav-link" href="{% url "retoshuellascarbono:arte" %}">APARTADO ARTISTICO</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">RANKING SEMANAL</a>
@@ -31,11 +31,11 @@
                   </li>
                   {% if user.is_authenticated %}
                   <li class="nav-item">
-                      <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                      <a class="nav-link" href="{% url 'retoshuellascarbono:logout' %}">Logout</a>
                   </li>
                   {% else %}
                   <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    <a class="nav-link" href="{% url 'retoshuellascarbono:login' %}">Login</a>
                   </li>
                 
                   {% endif %}

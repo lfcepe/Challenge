@@ -47,7 +47,7 @@ def registrarusuario(request):
 
 @login_required
 def subir_poema(request):
-    usuario = User.objects.get(user=request.user)
+    usuario = request.user
     if request.method == 'POST':
         form = Poemas_form(request.POST)
         if form.is_valid():
@@ -64,7 +64,7 @@ def subir_poema(request):
 
 @login_required
 def subir_dibujo(request):
-    usuario = User.objects.get(user=request.user)
+    usuario = request.user
     if request.method == 'POST':
         form = Dibujos_form(request.POST, request.FILES)
         if form.is_valid():
