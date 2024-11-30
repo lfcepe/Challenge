@@ -1,13 +1,6 @@
 {% extends "base.html" %}
 {% block title %}ARTE{% endblock %} 
-<<<<<<< HEAD
-{% block content %}      
-    <h2>Cambiemos el mundo con arte</h2>
-    <p>Demuestra tu lado artistico con poemas o dibujos sobre el cambio climatico. Asi lograremos crear conciencia poco a poco a las personas</p>
-    <a href="{% url "retoshuellascarbono:add_draw" %}" class="btn btn-secondary mb-3">Añade tu dibujo</a>
-    <a href="{% url "retoshuellascarbono:poemas_form" %}" class="btn btn-secondary mb-3">Añade tu poema</a>
-=======
-{% block content %}   
+{% block content %}       
 <style>
     .background-image {
         background-image: url('https://plus.unsplash.com/premium_photo-1712685912274-2483dade540f?q=80&w=1475&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
@@ -26,10 +19,9 @@
         <p style="font-size: 1.5rem;">Demuestra tu lado artistico con poemas o dibujos sobre el cambio climatico. Asi lograremos crear conciencia poco a poco a las personas</p>
     </div>
     <div class="py-5 text-center container">
-        <a href="{% url "dibujos_form" %}" class="btn btn-secondary mb-3">Añade tu dibujo</a>
-        <a href="{% url "poemas_form" %}" class="btn btn-secondary mb-3">Añade tu poema</a>
+        <a href="{% url "retoshuellascarbono:add_draw" %}" class="btn btn-secondary mb-3">Añade tu dibujo</a>
+    <a href="{% url "retoshuellascarbono:poemas_form" %}" class="btn btn-secondary mb-3">Añade tu poema</a>
     </div>
->>>>>>> 9dfac9aa4804d0afcb6b604b430d03fb8f447ec8
     {% for poema in poemas %}
         <div class="card" style="width: 18rem;">
             <div class="card-body">
@@ -54,13 +46,7 @@
             </div>
         </div>
     {% endfor %}
-<<<<<<< HEAD
-    <a href="{% url "retoshuellascarbono:index" %}" class="btn btn-primary">Regresar al Inicio</a>
-{% endblock %}
-=======
     <div class="py-5 text-center container">
-        <a href="{% url "index" %}" class="btn btn-primary">Regresar al Inicio</a>
-    </div>        
-</div>
+        <a href="{% url "retoshuellascarbono:index" %}" class="btn btn-primary">Regresar al Inicio</a>
+    </div>
 {% endblock %}
->>>>>>> 9dfac9aa4804d0afcb6b604b430d03fb8f447ec8

@@ -38,7 +38,7 @@ def registrarusuario(request):
             from django.contrib.auth import login
             login(request, usuario)
             messages.success(request, "Tu cuenta se ha creado correctamente.")
-            return redirect('login') 
+            return redirect('retoshuellascarbono:login') 
 
     else:
         form = UserRegistrationForm()
@@ -56,7 +56,7 @@ def subir_poema(request):
             poema.save()
             poema.puntospoemas += 5
             poema.save()
-            return redirect('arte')  
+            return redirect('retoshuellascarbono:arte')  
     else:
         form = Poemas_form()
     return render(request, 'poemas_form.html', {'form': form})
@@ -73,7 +73,7 @@ def subir_dibujo(request):
             dibujo.save()
             dibujo.puntosdibujo += 6
             dibujo.save()
-            return redirect('arte')  
+            return redirect('retoshuellascarbono:arte')  
     else:
         form = Dibujos_form()
     return render(request, 'dibujos_form.html', {'form': form})
@@ -89,7 +89,7 @@ def respuestas_usuarios(request, reto_id):
             reto_respuesta.usuario = request.user
             reto_respuesta.reto = reto
             reto_respuesta.save()
-            return redirect('index')  
+            return redirect('retoshuellascarbono:index')  
     else:
         form = Retosrespuesta_form()
     return render(request, 'usuariosretos_form.html', {'form': form, 'reto': reto})
@@ -134,7 +134,7 @@ def crear_reto(request):
         form = Reto_form(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('index')  
+            return redirect('retoshuellascarbono:index')  
     else:
         form = Reto_form()
     return render(request, 'retos_form.html', {'form': form})

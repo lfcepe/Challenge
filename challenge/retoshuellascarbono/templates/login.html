@@ -55,10 +55,6 @@
         <h2>Iniciar Sesión</h2>
         <form method="post">
             {% csrf_token %}
-<<<<<<< HEAD
-            {{ form.as_p }}
-            <a href="{% url "retoshuellascarbono:registro" %}">Si no se a registrado, de clic aqui</a>
-=======
             
             <div class="form-group">
                 <label for="id_username">Nombre de Usuario</label>
@@ -70,9 +66,8 @@
                 {{ form.password }}
             </div>
             
->>>>>>> 9dfac9aa4804d0afcb6b604b430d03fb8f447ec8
             <center><button type="submit">Ingresar</button></center>
-            <a href="{% url 'registro' %}">Si no se ha registrado, haga clic aquí</a>
+            <a href="{% url 'retoshuellascarbono:registro' %}">Si no se ha registrado, haga clic aquí</a>
         </form>
     </div>
 </body>
