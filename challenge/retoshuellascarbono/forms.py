@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 
 class Reto_form (forms.ModelForm):
     class Meta:
-        model: Retos
+        model = Retos
         fields = '__all__'
         widgets = {
             'reto': forms.TextInput(attrs={'class': 'form-control'}),
@@ -15,7 +15,7 @@ class Reto_form (forms.ModelForm):
 
 class Retosrespuesta_form (forms.ModelForm):
     class Meta:
-        model: Retosrespuesta
+        model = Retosrespuesta
         fields= ['imagenusuario', 'descripcion']
         widgets= {
             'imagenusuario':forms.ClearableFileInput(attrs={'class':'form-control'}),
