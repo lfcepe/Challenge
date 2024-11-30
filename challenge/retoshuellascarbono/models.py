@@ -51,5 +51,9 @@ class Rankings (models.Model):
     usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     puntostotales = models.IntegerField(default= 0, null= False)
 
-    def  __str__(self) -> str:
-        return self.usuario
+    @property
+    def puntaje_total(self):
+        return  + self.puntaje_de_dibujos + self.puntaje_de_poemas
+
+    def __str__(self):
+        return f"{self.user.username} - {self.puntaje_total}"
