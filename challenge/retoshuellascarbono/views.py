@@ -2,12 +2,13 @@ from django.template import loader
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.views import LoginView
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import Retos, Retosrespuesta, Poemas, Dibujos, Rankings
 from .forms import Retosrespuesta_form, Reto_form, Dibujos_form, Poemas_form, UserRegistrationForm
-# Create your views here.
+
+#  Create your views here.
 
 def index(request):
     template = loader.get_template('index.html')
@@ -121,3 +122,19 @@ def administrar_respuestas(request, reto_id):
 def ranking(request):
     rankings = Rankings.objects.all().order_by('-puntaje')
     return render(request, 'ranking.html', {'rankings': rankings})
+
+#Retos Administradores
+def es_administrador(user):
+    return user.groups.filter(name='administradores').exists()
+
+@login_required
+@user_passes_test(es_administrador)
+def crear_reto(request):
+    if request.method == 'POST':
+        form = Reto_form(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')  
+    else:
+        form = Reto_form()
+    return render(request, 'retos_form.html', {'form': form})

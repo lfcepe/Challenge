@@ -16,5 +16,6 @@ urlpatterns = [
     path('respuestaretos_form/<int:reto_id>/', views.respuestas_usuarios, name='respuestas_form'),
     path('administrar_retos_respuestas/', views.administrar_respuestas , name='administrar_respuestas'),
     path('ranking/', views.ranking, name='ranking'),
+    path('crear_reto/', views.crear_reto, name='crear_reto'),
 ]
 
