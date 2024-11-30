@@ -15,12 +15,14 @@ class Retosrespuesta (models.Model):
     usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     reto = models.ForeignKey(Retos, on_delete=models.CASCADE)
     imagenusuario = models.ImageField(upload_to='pruebas_imagen')
+    descripcion = models.TextField(null=False, max_length= 1000)
+    fecha_subida = models.DateTimeField(auto_now_add=True)
     ESTADO = {
         ('APROVADO', 'APROVADO'),
-        ('PENDIENTE', 'PENDIENTE')
+        ('RECHAZADO', 'RECHAZADO'),
+        ('PENDIENTE', 'PENDIENTE'),
     }
     estado = models.CharField(default= 'PENDIENTE', max_length=50, choices= ESTADO, null = False)
-    fecha_subida = models.DateTimeField(auto_now_add=True)
 
     
 class Poemas (models.Model):

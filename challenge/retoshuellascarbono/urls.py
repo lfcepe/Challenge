@@ -13,5 +13,8 @@ urlpatterns = [
     path('arte/', views.arte, name= 'arte'),
     path('add_poem/', views.subir_poema, name = 'poemas_form'),
     path('add_draw/', views.subir_dibujo, name='dibujos_form'),
+    path('respuestaretos_form/<int:reto_id>/', views.respuestas_usuarios, name='respuestas_form'),
+    path('administrar_retos_respuestas/', views.administrar_respuestas , name='administrar_respuestas'),
+    path('ranking/', views.ranking, name='ranking'),
 ]
 

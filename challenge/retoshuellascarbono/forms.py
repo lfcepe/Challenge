@@ -16,9 +16,10 @@ class Reto_form (forms.ModelForm):
 class Retosrespuesta_form (forms.ModelForm):
     class Meta:
         model: Retosrespuesta
-        fields= ['imagenusuario']
+        fields= ['imagenusuario', 'descripcion']
         widgets= {
-            'imagenusuario':forms.ClearableFileInput(attrs={'class':'form-control'})
+            'imagenusuario':forms.ClearableFileInput(attrs={'class':'form-control'}),
+            'descripcion': forms.TextInput(attrs={'class': 'form-control'})
         }
 
 class Poemas_form (forms.ModelForm):
