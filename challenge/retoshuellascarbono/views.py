@@ -84,18 +84,21 @@ def subir_dibujo(request):
 
 #retos
 @login_required
-def respuestas_usuarios(request, reto_id):
-    reto = Retosrespuesta.objects.get(id=reto_id)
+def usuariosretos_form(request, reto_id=None):
+    # Intenta obtener el reto con el ID proporcionado
+    reto = reto_id
+    
     if request.method == 'POST':
         form = Retosrespuesta_form(request.POST, request.FILES)
         if form.is_valid():
             reto_respuesta = form.save(commit=False)
             reto_respuesta.usuario = request.user
-            reto_respuesta.reto = reto
+            reto_respuesta.reto = reto  # Asigna el reto obtenido
             reto_respuesta.save()
-            return redirect('retoshuellascarbono:index')  
+            return redirect('retoshuellascarbono:index')
     else:
         form = Retosrespuesta_form()
+
     return render(request, 'usuariosretos_form.html', {'form': form, 'reto': reto})
 
 @login_required

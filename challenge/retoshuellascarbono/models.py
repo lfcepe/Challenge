@@ -18,7 +18,7 @@ class Retosrespuesta (models.Model):
     descripcion = models.TextField(null=False, max_length= 1000)
     fecha_subida = models.DateTimeField(auto_now_add=True)
     ESTADO = {
-        ('APROVADO', 'APROVADO'),
+        ('APROBADO', 'APROBADO'),
         ('RECHAZADO', 'RECHAZADO'),
         ('PENDIENTE', 'PENDIENTE'),
     }
