@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Agregar dibujo{% endblock %}
+{% block content %}
+    <h2>Agregar dibujo</h2>
+    <form method="post" enctype="multipart/form-data"> 
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+    <a href="{% url 'index' %}" class="btn btn-secondary mt-3">Regresar a la pagina anterior </a>
+{% endblock %}
