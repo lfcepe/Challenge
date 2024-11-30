@@ -11,10 +11,14 @@ from .forms import Retosrespuesta_form, Reto_form, Dibujos_form, Poemas_form, Us
 #  Create your views here.
 
 def index(request):
-    template = loader.get_template('index.html')
-    context = {}
-    return HttpResponse(template.render(context, request))
-
+    # Obtener todos los retos
+    retos = Retos.objects.all()
+    
+    # Pasar los retos al contexto
+    context = {'retos': retos}
+    
+    # Renderizar la plantilla con los datos
+    return render(request, 'index.html', context)
 #Vista para el login
 class CustomLoginView(LoginView):
     template_name = 'login.html'
