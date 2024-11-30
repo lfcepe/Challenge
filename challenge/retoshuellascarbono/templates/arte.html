@@ -28,9 +28,7 @@
                 <h5 class="card-title">Titulo: {{ poema.titulopoema }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Creador: {{ poema.usuario }}</h6>
                 <p class="card-text">{{ poema.rima }}</p>
-                <a href="poema/{{ poema.id }}" class="btn btn-primary"><i class="fa-regular fa-eye"></i></a>
-                <a href="edit_poema/{{ poema.id }}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                <a href="delete_poema/{{ poema.id }}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                <a href="delete_poem/{{ poema.id }}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
             </div>
         </div>
     {% endfor %}
@@ -40,9 +38,7 @@
             <div class="card-body">
                 <p class="card-text">Creador: {{ dibujo.usuario }}</p>
                 <p class="card-text">Nombre del Dibujo: {{ dibujo.nombredibujo }}</p>
-                <a href="dibujo/{{ dibujo.id }}" class="btn btn-primary"><i class="fa-regular fa-eye"></i></a>
-                <a href="edit_dibujo/{{ dibujo.id }}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                <a href="delete_dibujo/{{ dibujo.id }}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                <a href="delete_draw/{{ dibujo.id }}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
             </div>
         </div>
     {% endfor %}

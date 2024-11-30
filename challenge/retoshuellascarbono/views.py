@@ -164,4 +164,17 @@ def crear_reto(request):
     return render(request, 'retos_form.html', {'form': form})
 
 def scoreboard_view(request):
-    return render(request, 'rankingsemanal.html')  
+    return render(request, 'rankingsemanal.html') 
+#eliminar
+@login_required
+def delete_poema(request, id):
+    poema = get_object_or_404(Poemas, pk = id)
+    poema.delete()
+    return redirect("retoshuellasdecarbono:arte")
+
+@login_required
+def delete_dibujo(request, id):
+    dibujo = get_object_or_404(Dibujos, pk = id)
+    dibujo.delete()
+    return redirect("retoshuellasdecarbono:arte")
+
