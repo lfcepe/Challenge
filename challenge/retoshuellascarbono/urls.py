@@ -17,5 +17,6 @@ urlpatterns = [
     path('administrar_retos_respuestas/', views.administrar_respuestas , name='administrar_respuestas'),
     path('ranking/', views.ranking, name='ranking'),
     path('crear_reto/', views.crear_reto, name='crear_reto'),
+    path('rankingsemanal/', views.scoreboard_view, name='rankingsemanal'),
 ]
 

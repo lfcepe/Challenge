@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import Retos, Retosrespuesta, Poemas, Dibujos, Rankings
 from .forms import Retosrespuesta_form, Reto_form, Dibujos_form, Poemas_form, UserRegistrationForm
+from django.shortcuts import render
 
 #  Create your views here.
 
@@ -142,3 +143,6 @@ def crear_reto(request):
     else:
         form = Reto_form()
     return render(request, 'retos_form.html', {'form': form})
+
+def scoreboard_view(request):
+    return render(request, 'rankingsemanal.html')  
