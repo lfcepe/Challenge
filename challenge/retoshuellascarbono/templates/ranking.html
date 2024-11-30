@@ -1,17 +1,77 @@
 {% extends "base.html" %}
 {% block title %}RANKING{% endblock %} 
+
+{% block style %}
+    <style>
+        .scoreboard {
+            max-width: 700px;
+            margin: 30px auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .scoreboard-header {
+            background-color: bisque;
+            color: #14aa5f;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .user-avatar {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+        .user-row {
+            display: flex;
+            align-items: center;
+        }
+        .rank {
+            font-weight: bold;
+            color: #0d6efd;
+        }
+        .fire-icon {
+            color: #ff5733;
+            margin-left: 5px;
+        }
+    </style>
+{% endblock %}
+
 {% block content %}      
-    <h2>Ranking ecológico</h2>
-    <p>Si estas en el podio, podras reclamar premios fantasticos en la universidad</p>
-    {% for ranking in rankings %}
-        <ol class="list-group list-group-numbered">
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-                <div class="fw-bold">Usuario: {{ ranking.nombreusuario }}</div>
-            </div>
-            <span class="badge bg-primary rounded-pill">Puntaje: {{ ranking.puntostotales }}</span>
-            </li>
-        </ol>
-    {% endfor %}
-    <a href="{% url "retoshuellascarbono:index" %}" class="btn btn-primary">Regresar al Inicio</a>
+    <div class="scoreboard">
+        <div class="scoreboard-header">Ranking Ecológico</div>
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Puntos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ranking in rankings %}
+                    <tr>
+                        <th scope="row" class="rank">{{ forloop.counter }}</th>
+                        <td>
+                            <div class="user-row">
+                                <img src="https://via.placeholder.com/40" alt="Avatar" class="user-avatar">
+                                <span>{{ ranking.nombreusuario }}</span>
+                            </div>
+                        </td>
+                        <td>{{ ranking.puntostotales }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="text-center mt-3">
+        <a href="{% url 'retoshuellascarbono:index' %}" class="btn btn-primary">Regresar al Inicio</a>
+    </div>
 {% endblock %}
