@@ -35,7 +35,7 @@ En caso de querer desactivar el ambiente usar
 deactivate
 ~~~
 ### Windows
-Activación de la ejecución de scrips para PowerShell (Ejecutar como administrados PowerShell)
+Activación de la ejecución de scrips para PowerShell (Ejecutar PowerShell como administrados)
 ~~~
 Set-ExecutionPolicy Unrestricted
 ~~~
