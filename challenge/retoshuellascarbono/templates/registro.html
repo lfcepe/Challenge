@@ -1,0 +1,65 @@
+{% block content %}
+{% load static %}
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="{% static "bootstrap.min.css" %}"> 
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrate</title>
+</head>
+<style>
+    body {
+            font-family: 'Roboto', sans-serif;
+        }
+        h2 {
+            font-weight: 700;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 12px;
+            margin-block-end: 20px; /* Añadido margen superior para mover el botón abajo */
+        }
+        .container {
+            height: 500px;
+            width: 450px;
+            padding: 50px;
+            margin: 150px auto;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            border-top: 100px;
+            padding-top: 75px;
+            
+        } 
+        /* Estilo para los campos del formulario */
+
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 5px;
+            margin:  -10px ;
+            border-radius: 10px; /* Bordes redondeados */
+            border: 1px solid #ccc; /* Borde de color gris */
+            font-size: 16px;
+        }
+        input:focus {
+            outline: none;
+            border: 1px solid #4df0b1; /* Borde azul cuando se selecciona */
+        }
+
+
+</style>
+<body>
+    <div class="container" >
+        <h2>Registrate</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Registrar</button>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock content %}

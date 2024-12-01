@@ -1,0 +1,66 @@
+{% extends "base.html" %} 
+{% block title %}ARTE{% endblock %} 
+{% block content %}       
+<style>
+    .background-image {
+        background-image: url('https://plus.unsplash.com/premium_photo-1712685912274-2483dade540f?q=80&w=1475&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        padding: 20px;
+        min-height: 100vh;
+        color: #fff;
+    }
+</style>
+<div class="background-image">    
+    <div class="py-5 text-center container" style="color: rgb(12, 82, 55);">
+        <h1>Cambiemos el mundo con arte</h1>
+        <p style="font-size: 1.5rem;">Demuestra tu lado artístico con poemas o dibujos sobre el cambio climático. Así lograremos crear conciencia poco a poco a las personas</p>
+    </div>
+    <div class="py-5 text-center container">
+        <a href="{% url "retoshuellascarbono:add_draw" %}" class="btn btn-secondary mb-3">Añade tu dibujo</a>
+        <a href="{% url "retoshuellascarbono:poemas_form" %}" class="btn btn-secondary mb-3">Añade tu poema</a>
+    </div>
+    
+    <!-- Contenedor para las cards -->
+    <div class="container">
+        <div class="row"> 
+            <!-- Poemas -->
+            {% for poema in poemas %}
+                <div class="col-md-4 mb-4"> <!-- 3 cards por fila en pantallas medianas y grandes -->
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Titulo: {{ poema.titulopoema }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Creador: {{ poema.usuario }}</h6>
+                            <p class="card-text">{{ poema.rima }}</p>
+                            <a href="poema/{{ poema.id }}" class="btn btn-primary"><i class="fa-regular fa-eye"></i></a>
+                            <a href="edit_poema/{{ poema.id }}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="delete_poema/{{ poema.id }}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+            <!-- Dibujos -->
+            {% for dibujo in dibujos %}
+                <div class="col-md-4 mb-4"> <!-- 3 cards por fila en pantallas medianas y grandes -->
+                    <div class="card shadow-sm" style="width: 18rem;">
+                        <img src=" https://st.depositphotos.com/1675849/4278/v/450/depositphotos_42784617-stock-illustration-human-hands-holding-earth.jpg " class="card-img-top" alt="Imagen del dibujo" style="height: 225px; object-fit: cover;">
+                        <div class="card-body">
+                            <p class="card-text">Creador: {{ dibujo.usuario }}</p>
+                            <p class="card-text">Nombre del Dibujo: {{ dibujo.nombredibujo }}</p>
+                            <a href="dibujo/{{ dibujo.id }}" class="btn btn-primary"><i class="fa-regular fa-eye"></i></a>
+                            <a href="edit_dibujo/{{ dibujo.id }}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="delete_dibujo/{{ dibujo.id }}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div> <!-- Fin de la fila -->
+    </div>
+
+    <div class="py-5 text-center container">
+        <a href="{% url "retoshuellascarbono:index" %}" class="btn btn-primary">Regresar al Inicio</a>
+    </div>
+</div>
+{% endblock %}
