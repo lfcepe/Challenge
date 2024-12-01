@@ -30,9 +30,9 @@
                 <div class="col-md-4 mb-4"> <!-- 3 cards por fila en pantallas medianas y grandes -->
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
-                            <h5 class="card-title">Titulo: {{ poema.titulopoema }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Titulo: {{ poema.titulopoema }}</h6>
                             <h6 class="card-subtitle mb-2 text-muted">Creador: {{ poema.usuario }}</h6>
-                            <p class="card-text">{{ poema.rima }}</p>
+                            <p class="card-subtitle mb-2 text-muted">Poema: {{ poema.rima }}</p>
                             <a href="poema/{{ poema.id }}" class="btn btn-primary"><i class="fa-regular fa-eye"></i></a>
                             <a href="edit_poema/{{ poema.id }}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
                             <a href="delete_poema/{{ poema.id }}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
@@ -47,8 +47,8 @@
                     <div class="card shadow-sm" style="width: 18rem;">
                         <img src=" https://st.depositphotos.com/1675849/4278/v/450/depositphotos_42784617-stock-illustration-human-hands-holding-earth.jpg " class="card-img-top" alt="Imagen del dibujo" style="height: 225px; object-fit: cover;">
                         <div class="card-body">
-                            <p class="card-text">Creador: {{ dibujo.usuario }}</p>
-                            <p class="card-text">Nombre del Dibujo: {{ dibujo.nombredibujo }}</p>
+                            <p class="card-subtitle mb-2 text-muted">Creador: {{ dibujo.usuario }}</p>
+                            <p class="card-subtitle mb-2 text-muted">Nombre del Dibujo: {{ dibujo.nombredibujo }}</p>
                             <a href="dibujo/{{ dibujo.id }}" class="btn btn-primary"><i class="fa-regular fa-eye"></i></a>
                             <a href="edit_dibujo/{{ dibujo.id }}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
                             <a href="delete_dibujo/{{ dibujo.id }}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
