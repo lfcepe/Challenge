@@ -56,4 +56,4 @@ class Rankings (models.Model):
         return  + self.puntaje_de_dibujos + self.puntaje_de_poemas
 
     def __str__(self):
-        return f"{self.user.username} - {self.puntaje_total}"
+        return f"{self.usuario} - {self.puntaje_total}"

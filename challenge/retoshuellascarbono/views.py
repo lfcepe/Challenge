@@ -136,11 +136,11 @@ def ranking(request):
 @receiver(post_save, sender=User)
 def crear_usuario_ranking(sender, instance, created, **kwargs):
     if created:
-        Rankings.objects.create(user=instance)
+        Rankings.objects.create(usuario=instance)
 
 def puntaje_usuario(request):
     if request.user.is_authenticated:
-        ranking = Rankings.objects.get(user=request.user)
+        ranking = Rankings.objects.get(user=request.usuario)
         return {'puntaje_total': ranking.puntostotales}
     return {}
 
